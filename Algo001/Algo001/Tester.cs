@@ -2,6 +2,8 @@
 using System.Collections.Generic;
 using System.Text;
 
+using MyLib;
+
 namespace Algo001
 {
     class Tester
