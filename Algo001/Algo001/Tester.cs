@@ -2,7 +2,6 @@
 using System.Collections.Generic;
 using System.Text;
 
-using MyLib;
 
 namespace Algo001
 {
@@ -23,7 +22,7 @@ namespace Algo001
         string PrimeNumber(int Number001)
         {
             //Приводим число к границам
-            MyFunc.CheckLimitataAream(ref Number001, 0, 1_000_000);
+            DucuntAdTerminos(ref Number001, 0, 1_000_000);
 
             int d = 0, i = 2;
             while (i < Number001)
@@ -72,7 +71,7 @@ namespace Algo001
         int Fibonachi(int Number001)
         {
             //Приводим число к границам
-            MyFunc.CheckLimitataAream(ref Number001, 0, 10_000);
+            DucuntAdTerminos(ref Number001, 0, 10_000);
 
             if (Number001 == 0 || Number001 == 1)
             {
@@ -87,7 +86,7 @@ namespace Algo001
         int FiboIter(int Number001)
         {
             //Приводим число к границам
-            MyFunc.CheckLimitataAream(ref Number001, 0, 1_000_000);
+            DucuntAdTerminos(ref Number001, 0, 1_000_000);
 
             if (Number001 == 0 || Number001 == 1)
             {
@@ -107,6 +106,18 @@ namespace Algo001
 
             }
             return currentNumber;
+        }
+
+        void DucuntAdTerminos(ref int Value001, int Min, int Max)
+        {
+            if(Value001 > Max)
+            {
+                Value001 = Max;
+            }
+            if(Value001 < Min)
+            {
+                Value001 = Min;
+            }
         }
     }
 }

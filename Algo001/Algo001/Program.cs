@@ -1,6 +1,5 @@
 ﻿using System;
 
-using MyLib;
 
 namespace Algo001
 {
