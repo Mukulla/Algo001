@@ -23,7 +23,7 @@ namespace Algo002
         {
             MaList001.AddNodeAfter(Node001, Value001);
 
-            TestFind(MaList001, Value001, ExpectedValue001, ExpectedException001);
+            TestFind(MaList001, Node001.Value, ExpectedValue001, ExpectedException001);
         }
 
         public void TestFindNode(MaLinkedList MaList001, int Value001, int ExpectedValue001, Exception ExpectedException001)

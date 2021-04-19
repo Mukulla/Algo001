@@ -6,7 +6,7 @@ namespace Algo002
     {
         static void Main(string[] args)
         {
-            int CountPars = 2;
+            int CountPars = 1;
             string[] Denuntiatio = new string[]
             {
                 "Тест двусвязного списка",
@@ -22,15 +22,28 @@ namespace Algo002
                 switch (i)
                 {
                     case 0:
+                        MaLinkedList Li001 = new MaLinkedList();
                         TesterList Te001 = new TesterList();
+                        Te001.TestAddNode(Li001, 2, 2, null);
+                        Te001.TestAddNode(Li001, 3, 3, null);
+                        Te001.TestAddNode(Li001, 6, 6, null);
+
+                        Node N001 = new Node();
+                        N001.Value = 4;
+                        Te001.TestAddNodeAfter(Li001, Li001.FindNode(3), 4, 4, null);
+
+                        Te001.TestFindNode(Li001, 2, 2, null);
+
+                        Te001.TestGetCount(Li001, 4, null);
+
+                        Te001.TestRemoveNode(Li001, 2, 2, null);
+                        Te001.TestRemoveNode(Li001, N001, 4, null);
                         break;
                 }
                 if (i == 1)
                 {
-                    WriteToBinare Binarrer = new WriteToBinare();
-                    Binarrer.ReadNumbers();
-                    Binarrer.Write("Numbers.bin");
-                    Binarrer.Show("Numbers.bin");
+                    int[] Array001 = { 1, 2, 3, 4, 5 };
+                    Console.WriteLine(binarySearch(Array001, 4));
 
                     Console.WriteLine();
                     Console.WriteLine("Все части пройдены");
@@ -78,4 +91,5 @@ namespace Algo002
                 return -1;
             }
         }
+    }
 }

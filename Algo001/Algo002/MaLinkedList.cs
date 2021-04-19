@@ -10,29 +10,34 @@ namespace Algo002
         int TotalCount = 0;        
 
         //Первый элемент списка
-        Node Start;
+        Node Start = new Node();
         //Последний элемент списка
-        Node End;
+        Node End = new Node();
 
         public void AddNode(int value)
         {
-            Node TempoNode = new Node();
-            TempoNode.Value = value;
-            TempoNode.PrevNode = null;
-            TempoNode.NextNode = null;
+            
 
             if (TotalCount < 1)
             {
-                Start = TempoNode;
-                End = TempoNode;
+                Start.Value = value;
+                End.Value = value;
 
                 Start.NextNode = End;
+                Start.PrevNode = null;
+
+                End.NextNode = null;
                 End.PrevNode = Start;
 
                 ++TotalCount;
             }
             else
             {
+                Node TempoNode = new Node();
+                TempoNode.Value = value;
+                TempoNode.PrevNode = null;
+                TempoNode.NextNode = null;
+
                 End.NextNode = TempoNode;
                 TempoNode.PrevNode = End;
 
@@ -44,14 +49,27 @@ namespace Algo002
 
         public void AddNodeAfter(Node node, int value)
         {
+            Node Previous = Start;
             Node TempoIterator = Start;
 
             while (TempoIterator != null)
             {
-                if (TempoIterator == node)
+                if (Previous == node)
                 {
-                    TempoIterator.Value = value;
+                    Node Node001 = new Node();
+                    Node001.Value = value;
+
+                    Node001.PrevNode = Previous;
+                    Previous.NextNode = Node001;
+
+                    Node001.NextNode = TempoIterator;
+                    TempoIterator.PrevNode = Node001;
+                    
+                    ++TotalCount;
+                    break;
                 }
+
+                Previous = TempoIterator;
                 TempoIterator = TempoIterator.NextNode;
             }
         }
