@@ -7,12 +7,7 @@ namespace Algo002
     class MaLinkedList : ILinkedList
     {
         //Общее количество элементов
-        int TotalCount;
-        //Итератор
-        int Iterator;
-
-        //Текущий элемент
-        Node CurrentElement;
+        int TotalCount = 0;        
 
         //Первый элемент списка
         Node Start;
@@ -23,16 +18,38 @@ namespace Algo002
         {
             Node TempoNode = new Node();
             TempoNode.Value = value;
+            TempoNode.PrevNode = null;
+            TempoNode.NextNode = null;
+
+            if (TotalCount < 1)
             {
-                Value = value
-                NextNode = null
-                PrevNode = End;
-            };
+                Start = TempoNode;
+                End = TempoNode;
+
+                ++TotalCount;
+            }
+            else
+            {
+                TempoNode.PrevNode = End;
+
+                End = TempoNode;
+
+                ++TotalCount;
+            }
         }
 
         public void AddNodeAfter(Node node, int value)
         {
-            throw new NotImplementedException();
+            Node TempoIterator = Start;
+
+            while (TempoIterator != null)
+            {
+                if (TempoIterator == node)
+                {
+                    TempoIterator.Value = value;
+                }
+                TempoIterator = TempoIterator.NextNode;
+            }
         }
 
         public Node FindNode(int searchValue)
@@ -40,7 +57,7 @@ namespace Algo002
             Node TempoIterator = Start;
             bool Finded = false;
 
-            while (TempoIterator != End)
+            while (TempoIterator != null)
             {                
                 if(TempoIterator.Value == searchValue)
                 {
@@ -87,7 +104,7 @@ namespace Algo002
             Node Previous = Start;
             Node TempoIterator = Start;
 
-            while (TempoIterator != End)
+            while (TempoIterator != null)
             {
                 if (TempoIterator == node)
                 {
