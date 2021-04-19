@@ -7,7 +7,9 @@ namespace Algo002
     class MaLinkedList : ILinkedList
     {
         //Общее количество элементов
-        int Count;
+        int TotalCount;
+        //Итератор
+        int Iterator;
 
         //Текущий элемент
         Node CurrentElement;
@@ -19,7 +21,13 @@ namespace Algo002
 
         public void AddNode(int value)
         {
-            throw new NotImplementedException();
+            Node TempoNode = new Node();
+            TempoNode.Value = value;
+            {
+                Value = value
+                NextNode = null
+                PrevNode = End;
+            };
         }
 
         public void AddNodeAfter(Node node, int value)
@@ -29,22 +37,88 @@ namespace Algo002
 
         public Node FindNode(int searchValue)
         {
-            throw new NotImplementedException();
+            Node TempoIterator = Start;
+            bool Finded = false;
+
+            while (TempoIterator != End)
+            {                
+                if(TempoIterator.Value == searchValue)
+                {
+                    Finded = true;
+                    break;
+                }
+                TempoIterator = TempoIterator.NextNode;
+            }
+
+            if(!Finded)
+            {
+                return null;
+            }
+
+            return TempoIterator;
         }
 
         public int GetCount()
         {
-            throw new NotImplementedException();
+            return TotalCount;
         }
 
-        public void RemoveNode(int index)
+        public void RemoveNode(int Index)
         {
-            throw new NotImplementedException();
+            if(!Checker(Index))
+            {
+                return;
+            }
+
+            Node Previous = Start;
+            Node TempoIterator = Start;
+
+            for (int i = 0; i < Index; ++i)
+            {
+                Previous = TempoIterator;
+                TempoIterator = TempoIterator.NextNode;
+            }
+
+            Previous.NextNode = TempoIterator.NextNode;
         }
 
         public void RemoveNode(Node node)
         {
-            throw new NotImplementedException();
+            Node Previous = Start;
+            Node TempoIterator = Start;
+
+            while (TempoIterator != End)
+            {
+                if (TempoIterator == node)
+                {
+                    Previous.NextNode = TempoIterator.NextNode;
+                }
+                Previous = TempoIterator;
+                TempoIterator = TempoIterator.NextNode;
+            }
+        }
+
+        bool Checker(int SomeIndex)
+        {
+            if(SomeIndex >= 0)
+            {
+                if(SomeIndex < TotalCount)
+                {
+                    return true;
+                }
+            }
+            return false;
+        }
+
+        Node GetNodeByIndex(int SomeIndex)
+        {
+            Node Returner = Start;
+            for (int i = 0; i < SomeIndex; ++i)
+            {
+                Returner = Returner.NextNode;
+            }
+
+            return Returner;
         }
     }
 }
