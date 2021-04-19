@@ -26,10 +26,14 @@ namespace Algo002
                 Start = TempoNode;
                 End = TempoNode;
 
+                Start.NextNode = End;
+                End.PrevNode = Start;
+
                 ++TotalCount;
             }
             else
             {
+                End.NextNode = TempoNode;
                 TempoNode.PrevNode = End;
 
                 End = TempoNode;
@@ -125,17 +129,6 @@ namespace Algo002
                 }
             }
             return false;
-        }
-
-        Node GetNodeByIndex(int SomeIndex)
-        {
-            Node Returner = Start;
-            for (int i = 0; i < SomeIndex; ++i)
-            {
-                Returner = Returner.NextNode;
-            }
-
-            return Returner;
         }
     }
 }
