@@ -3,7 +3,9 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 16
 VisualStudioVersion = 16.0.28729.10
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Algo001", "Algo001\Algo001.csproj", "{47B4A893-BA71-4301-92E1-962D9C136AAB}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Algo001", "Algo001\Algo001.csproj", "{47B4A893-BA71-4301-92E1-962D9C136AAB}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Algo002", "Algo002\Algo002.csproj", "{FA666DBB-C85B-4468-A5ED-E75ACF7D3D00}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -15,6 +17,10 @@ Global
 		{47B4A893-BA71-4301-92E1-962D9C136AAB}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{47B4A893-BA71-4301-92E1-962D9C136AAB}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{47B4A893-BA71-4301-92E1-962D9C136AAB}.Release|Any CPU.Build.0 = Release|Any CPU
+		{FA666DBB-C85B-4468-A5ED-E75ACF7D3D00}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{FA666DBB-C85B-4468-A5ED-E75ACF7D3D00}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{FA666DBB-C85B-4468-A5ED-E75ACF7D3D00}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{FA666DBB-C85B-4468-A5ED-E75ACF7D3D00}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
