@@ -36,7 +36,11 @@ namespace Algo002
         void PushUp(int Value001);
         void PushDown(int Value001);
 
+<<<<<<< HEAD
         //Удалить элемент
+=======
+        //Удалить элемент после индекса
+>>>>>>> parent of 847b4a0 (MaList version)
         void Pop(int Index);
         void PopValue(int Value001);
         void PopUp();
