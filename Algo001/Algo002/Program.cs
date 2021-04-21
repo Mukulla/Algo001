@@ -25,19 +25,26 @@ namespace Algo002
                         MaLinkedList Li001 = new MaLinkedList();
                         TesterList Te001 = new TesterList();
                         Te001.TestAddNode(Li001, 2, 2, null);
-                        Te001.TestAddNode(Li001, 3, 3, null);
-                        Te001.TestAddNode(Li001, 6, 6, null);
+                        //Li001.Show();
 
-                        Node N001 = new Node();
-                        N001.Value = 4;
+                        Te001.TestAddNode(Li001, 3, 3, null);
+                        //Li001.Show();
+
+                        Te001.TestAddNode(Li001, 6, 6, null);
+                        //Li001.Show();
+
+
                         Te001.TestAddNodeAfter(Li001, Li001.FindNode(3), 4, 4, null);
+                        //Li001.Show();
 
                         Te001.TestFindNode(Li001, 2, 2, null);
 
                         Te001.TestGetCount(Li001, 4, null);
 
-                        Te001.TestRemoveNode(Li001, 2, 2, null);
-                        Te001.TestRemoveNode(Li001, N001, 4, null);
+                        Te001.TestRemoveNode(Li001, 2, 4, 4, null);
+                        //Li001.Show();
+
+                        Te001.TestRemoveNode(Li001, Li001.FindNode(3), 4, null);
                         break;
                 }
                 if (i == 1)

@@ -88,21 +88,14 @@ namespace Algo002
         public Node FindNode(int searchValue)
         {
             Node TempoIterator = Start;
-            bool Finded = false;
 
             while (TempoIterator != null)
             {
                 if (TempoIterator.Value == searchValue)
                 {
-                    Finded = true;
-                    break;
+                    return TempoIterator;
                 }
                 TempoIterator = TempoIterator.NextNode;
-            }
-
-            if (!Finded)
-            {
-                return null;
             }
 
             return TempoIterator;
@@ -119,6 +112,23 @@ namespace Algo002
             {
                 return;
             }
+
+            if (Index == 0)
+            {
+                Start.Value = Start.NextNode.Value;
+                Start.NextNode = Start.NextNode.NextNode;
+                Start.PrevNode = null;
+                return;
+            }
+
+            if (Index == TotalCount)
+            {
+                End.Value = End.PrevNode.Value;
+                End.PrevNode = End.PrevNode.PrevNode;
+                End.NextNode = null;
+                return;
+            }
+
 
             Node TempoIterator = Start;
             for (int i = 0; i < Index; ++i)
