@@ -16,52 +16,68 @@ namespace Algo002
 
             bool CoinciderentValue = MaList001.FindNode(Value001).Value == ExpectedValue001;
 
-            TestFind(MaList001, Value001, ExpectedValue001, ExpectedException001);                      
+            TestFind(MaList001, Value001, ExpectedValue001, ExpectedException001, true);                      
         }
 
         public void TestAddNodeAfter(MaLinkedList MaList001, Node Node001, int Value001, int ExpectedValue001, Exception ExpectedException001)
         {
             MaList001.AddNodeAfter(Node001, Value001);
 
-            TestFind(MaList001, Node001.Value, ExpectedValue001, ExpectedException001);
+            TestFind(MaList001, Value001, ExpectedValue001, ExpectedException001, true);
         }
 
         public void TestFindNode(MaLinkedList MaList001, int Value001, int ExpectedValue001, Exception ExpectedException001)
         {
-            TestFind(MaList001, Value001, ExpectedValue001, ExpectedException001);
+            TestFind(MaList001, Value001, ExpectedValue001, ExpectedException001, true);
         }
 
         public void TestGetCount(MaLinkedList MaList001, int ExpectedValue001, Exception ExpectedException001)
         {
-            TestFind(MaList001, MaList001.GetCount(), ExpectedValue001, ExpectedException001);
+            TestFind(MaList001, MaList001.GetCount(), ExpectedValue001, ExpectedException001, true);
         }
 
-        public void TestRemoveNode(MaLinkedList MaList001, int Value001, int ExpectedValue001, Exception ExpectedException001)
+        public void TestRemoveNode(MaLinkedList MaList001, int Index001, int Value001, int ExpectedValue001, Exception ExpectedException001)
         {
-            MaList001.RemoveNode(Value001);
-            TestFind(MaList001, Value001, ExpectedValue001, ExpectedException001);
+            MaList001.RemoveNode(Index001);
+            TestFind(MaList001, Value001, ExpectedValue001, ExpectedException001, false);
         }
 
         public void TestRemoveNode(MaLinkedList MaList001, Node Node001, int ExpectedValue001, Exception ExpectedException001)
         {
             MaList001.RemoveNode(Node001);
-            TestFind(MaList001, Node001.Value, ExpectedValue001, ExpectedException001);
+
+            TestFind(MaList001, Node001.Value, ExpectedValue001, ExpectedException001, false);
         }
 
 
 
 
-        //Проверка на наличие элемента в списке
-        void TestFind(MaLinkedList MaList002, int Value002, int ExpectedValue002, Exception ExpectedException002)
+        //Проверка на наличие или отсустсвие элемента в списке
+        void TestFind(MaLinkedList MaList002, int Value002, int ExpectedValue002, Exception ExpectedException002, bool ResultCompare001)
         {
-            try
+            if(ResultCompare001)
             {
-                UtTestEventus(MaList002.FindNode(Value002).Value == ExpectedValue002);
+                try
+                {
+                    UtTestEventus(MaList002.FindNode(Value002).Value == ExpectedValue002);
+                }
+                catch (Exception Ex001)
+                {
+                    UtTestEventus(Ex001 == ExpectedException002);
+                }
             }
-            catch (Exception Ex001)
+            else
             {
-                UtTestEventus(Ex001 == ExpectedException002);
+                try
+                {
+                    UtTestEventus(MaList002.FindNode(Value002).Value != ExpectedValue002);
+                }
+                catch (NullReferenceException)
+                {
+                    UtTestEventus(true);
+                }
             }
+            
         }
         //Получить результат теста
         void UtTestEventus(bool Value001)

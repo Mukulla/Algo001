@@ -36,7 +36,7 @@ namespace Algo002
         void PushUp(int Value001);
         void PushDown(int Value001);
 
-        //Удалить элемент
+        //Удалить элемент после индекса
         void Pop(int Index);
         void PopValue(int Value001);
         void PopUp();

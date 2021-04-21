@@ -16,22 +16,32 @@ namespace Algo002
 
         public void AddNode(int value)
         {
-            
-
-            if (TotalCount < 1)
+            if (TotalCount == 0)
             {
                 Start.Value = value;
-                End.Value = value;
+                Start.NextNode = null;
+                Start.PrevNode = null;
 
+                //End.Value = value;
+                //End.NextNode = null;
+                //End.PrevNode = null;
+
+                ++TotalCount;
+                return;
+            }
+            if (TotalCount == 1)
+            {
                 Start.NextNode = End;
                 Start.PrevNode = null;
 
+                End.Value = value;
                 End.NextNode = null;
                 End.PrevNode = Start;
 
                 ++TotalCount;
+                return;
             }
-            else
+            if(TotalCount > 1)
             {
                 Node TempoNode = new Node();
                 TempoNode.Value = value;
@@ -44,6 +54,7 @@ namespace Algo002
                 End = TempoNode;
 
                 ++TotalCount;
+                return;
             }
         }
 
@@ -108,17 +119,15 @@ namespace Algo002
             {
                 return;
             }
-
-            Node Previous = Start;
+           
             Node TempoIterator = Start;
-
             for (int i = 0; i < Index; ++i)
             {
-                Previous = TempoIterator;
                 TempoIterator = TempoIterator.NextNode;
             }
 
-            Previous.NextNode = TempoIterator.NextNode;
+            TempoIterator.PrevNode.NextNode = TempoIterator.NextNode;
+            TempoIterator.NextNode.PrevNode = TempoIterator.PrevNode;
         }
 
         public void RemoveNode(Node node)
@@ -128,7 +137,7 @@ namespace Algo002
 
             while (TempoIterator != null)
             {
-                if (TempoIterator == node)
+                if (TempoIterator.Value == node.Value)
                 {
                     Previous.NextNode = TempoIterator.NextNode;
                 }
@@ -136,6 +145,17 @@ namespace Algo002
                 TempoIterator = TempoIterator.NextNode;
             }
         }
+        /*
+        public void Show()
+        {
+            Node TempoIterator = Start;
+
+            while (TempoIterator != null)
+            {
+                Console.WriteLine(TempoIterator.Value);
+                TempoIterator = TempoIterator.NextNode;
+            }
+        }*/
 
         bool Checker(int SomeIndex)
         {
