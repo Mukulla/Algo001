@@ -29,8 +29,8 @@ namespace Algo002
     class MaElement<T>
     {
         public T Value;
-        public Node NextNode;
-        public Node PrevNode;
+        public MaElement<T> NextNode;
+        public MaElement<T> PrevNode;
     }
 
     class MaList<T> : ILinkedList001<T>
@@ -45,39 +45,148 @@ namespace Algo002
 
         public void Pop(int Index)
         {
-            throw new NotImplementedException();
+            if (!Checker(Index))
+            {
+                return;
+            }
+
+            MaElement<T> TempoIterator = Start;
+            for (int i = 0; i < Index; ++i)
+            {
+                TempoIterator = TempoIterator.NextNode;
+            }
+
+            TempoIterator.PrevNode.NextNode = TempoIterator.NextNode;
+            TempoIterator.NextNode.PrevNode = TempoIterator.PrevNode;
         }
 
         public void PopDown()
         {
-            throw new NotImplementedException();
+            End = End.PrevNode;
+            End.NextNode = null;
         }
 
         public void PopUp()
         {
-            throw new NotImplementedException();
+            Start = Start.NextNode;
+            Start.PrevNode = null;
         }
 
         public void PopValue(T Value001)
-        {
-            throw new NotImplementedException();
+        {            
+            MaElement<T> TempoIterator = Start;
+
+            while (TempoIterator != null)
+            {
+                /*if (TempoIterator.Value == Value001 )
+                {
+                } */              
+                TempoIterator = TempoIterator.NextNode;
+            }
         }
 
 
 
         public void Push(int Index, T Value001)
         {
-            throw new NotImplementedException();
+            if (!Checker(Index))
+            {
+                return;
+            }
+
+            MaElement<T> TempoIterator = Start;
+            for (int i = 0; i < Index; ++i)
+            {
+                TempoIterator = TempoIterator.NextNode;
+            }
+
+            MaElement<T> TempoNode = new MaElement<T>();
+            TempoNode.Value = Value001;
+
+            TempoNode.PrevNode = TempoIterator;
+            TempoNode.NextNode = TempoIterator.NextNode;
+
+            TempoIterator.NextNode = TempoNode;
         }
 
         public void PushDown(T Value001)
         {
-            throw new NotImplementedException();
+            if (TotalCount == 0)
+            {
+                Start.Value = Value001;
+                Start.NextNode = null;
+                Start.PrevNode = null;
+
+                ++TotalCount;
+                return;
+            }
+            if (TotalCount == 1)
+            {
+                Start.NextNode = End;
+                Start.PrevNode = null;
+
+                End.Value = Value001;
+                End.NextNode = null;
+                End.PrevNode = Start;
+
+                ++TotalCount;
+                return;
+            }
+            if (TotalCount > 1)
+            {
+                MaElement<T> TempoNode = new MaElement<T>();
+                TempoNode.Value = Value001;
+                TempoNode.PrevNode = null;
+                TempoNode.NextNode = null;
+
+                End.NextNode = TempoNode;
+                TempoNode.PrevNode = End;
+
+                End = TempoNode;
+
+                ++TotalCount;
+                return;
+            }
         }
 
         public void PushUp(T Value001)
         {
-            throw new NotImplementedException();
+            if (TotalCount == 0)
+            {
+                Start.Value = Value001;
+                Start.NextNode = null;
+                Start.PrevNode = null;
+
+                ++TotalCount;
+                return;
+            }
+            if (TotalCount == 1)
+            {
+                Start.NextNode = End;
+                Start.PrevNode = null;
+
+                End.Value = Value001;
+                End.NextNode = null;
+                End.PrevNode = Start;
+
+                ++TotalCount;
+                return;
+            }
+            if (TotalCount > 1)
+            {
+                MaElement<T> TempoNode = new MaElement<T>();
+                TempoNode.Value = Value001;
+                TempoNode.PrevNode = null;
+                TempoNode.NextNode = null;
+
+                Start.NextNode = TempoNode;
+                TempoNode.PrevNode = Start;
+
+                Start = TempoNode;
+
+                ++TotalCount;
+                return;
+            }
         }
 
 
@@ -109,6 +218,16 @@ namespace Algo002
                 }
             }
             return false;
+        }
+
+        bool Compare<T>(T x, T y) where T : class
+        {
+            return x == y;
+        }
+
+        bool Compare<T>(T x, T y) where T : Type
+        {
+            return x == y;
         }
     }
 }
