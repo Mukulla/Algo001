@@ -16,6 +16,7 @@ namespace Algo002
 
         public void AddNode(int value)
         {
+<<<<<<< HEAD
             
 
             if (TotalCount < 1)
@@ -26,12 +27,39 @@ namespace Algo002
                 Start.NextNode = End;
                 Start.PrevNode = null;
 
+=======
+            if (TotalCount == 0)
+            {
+                Start.Value = value;
+                Start.NextNode = null;
+                Start.PrevNode = null;
+
+                //End.Value = value;
+                //End.NextNode = null;
+                //End.PrevNode = null;
+
+                ++TotalCount;
+                return;
+            }
+            if (TotalCount == 1)
+            {
+                Start.NextNode = End;
+                Start.PrevNode = null;
+
+                End.Value = value;
+>>>>>>> parent of 936ac31 (Deleted)
                 End.NextNode = null;
                 End.PrevNode = Start;
 
                 ++TotalCount;
+<<<<<<< HEAD
             }
             else
+=======
+                return;
+            }
+            if(TotalCount > 1)
+>>>>>>> parent of 936ac31 (Deleted)
             {
                 Node TempoNode = new Node();
                 TempoNode.Value = value;
@@ -44,6 +72,10 @@ namespace Algo002
                 End = TempoNode;
 
                 ++TotalCount;
+<<<<<<< HEAD
+=======
+                return;
+>>>>>>> parent of 936ac31 (Deleted)
             }
         }
 
@@ -108,6 +140,7 @@ namespace Algo002
             {
                 return;
             }
+<<<<<<< HEAD
 
             Node Previous = Start;
             Node TempoIterator = Start;
@@ -119,6 +152,17 @@ namespace Algo002
             }
 
             Previous.NextNode = TempoIterator.NextNode;
+=======
+           
+            Node TempoIterator = Start;
+            for (int i = 0; i < Index; ++i)
+            {
+                TempoIterator = TempoIterator.NextNode;
+            }
+
+            TempoIterator.PrevNode.NextNode = TempoIterator.NextNode;
+            TempoIterator.NextNode.PrevNode = TempoIterator.PrevNode;
+>>>>>>> parent of 936ac31 (Deleted)
         }
 
         public void RemoveNode(Node node)
@@ -128,7 +172,11 @@ namespace Algo002
 
             while (TempoIterator != null)
             {
+<<<<<<< HEAD
                 if (TempoIterator == node)
+=======
+                if (TempoIterator.Value == node.Value)
+>>>>>>> parent of 936ac31 (Deleted)
                 {
                     Previous.NextNode = TempoIterator.NextNode;
                 }
@@ -136,6 +184,20 @@ namespace Algo002
                 TempoIterator = TempoIterator.NextNode;
             }
         }
+<<<<<<< HEAD
+=======
+        /*
+        public void Show()
+        {
+            Node TempoIterator = Start;
+
+            while (TempoIterator != null)
+            {
+                Console.WriteLine(TempoIterator.Value);
+                TempoIterator = TempoIterator.NextNode;
+            }
+        }*/
+>>>>>>> parent of 936ac31 (Deleted)
 
         bool Checker(int SomeIndex)
         {
