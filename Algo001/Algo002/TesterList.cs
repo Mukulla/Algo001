@@ -16,7 +16,7 @@ namespace Algo002
 
             bool CoinciderentValue = MaList001.FindNode(Value001).Value == ExpectedValue001;
 
-            TestFind(MaList001, Value001, ExpectedValue001, ExpectedException001);                      
+            TestFind(MaList001, Value001, ExpectedValue001, ExpectedException001);
         }
 
         public void TestAddNodeAfter(MaLinkedList MaList001, Node Node001, int Value001, int ExpectedValue001, Exception ExpectedException001)
