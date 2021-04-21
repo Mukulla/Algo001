@@ -37,10 +37,14 @@ namespace Algo002
         void PushDown(int Value001);
 
 <<<<<<< HEAD
+<<<<<<< HEAD
         //Удалить элемент
 =======
         //Удалить элемент после индекса
 >>>>>>> parent of 847b4a0 (MaList version)
+=======
+        //Удалить элемент
+>>>>>>> parent of fbd803a (DZ Done)
         void Pop(int Index);
         void PopValue(int Value001);
         void PopUp();
