@@ -11,7 +11,6 @@ namespace Algo002
         public Node PrevNode { get; set; }
     }
 
-
     public interface ILinkedList
     {
         //Количество эелементов
