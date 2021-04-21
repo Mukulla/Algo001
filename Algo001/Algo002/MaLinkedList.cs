@@ -7,7 +7,7 @@ namespace Algo002
     class MaLinkedList : ILinkedList
     {
         //Общее количество элементов
-        int TotalCount = 0;        
+        int TotalCount = 0;
 
         //Первый элемент списка
         Node Start = new Node();
@@ -16,54 +16,32 @@ namespace Algo002
 
         public void AddNode(int value)
         {
-<<<<<<< HEAD
-<<<<<<< HEAD
-            
-
-            if (TotalCount < 1)
-            {
-                Start.Value = value;
-                End.Value = value;
-
-                Start.NextNode = End;
-                Start.PrevNode = null;
-
-=======
             if (TotalCount == 0)
-=======
-            
-
-            if (TotalCount < 1)
->>>>>>> parent of fbd803a (DZ Done)
             {
                 Start.Value = value;
-                End.Value = value;
+                Start.NextNode = null;
+                Start.PrevNode = null;
 
+                //End.Value = value;
+                //End.NextNode = null;
+                //End.PrevNode = null;
+
+                ++TotalCount;
+                return;
+            }
+            if (TotalCount == 1)
+            {
                 Start.NextNode = End;
                 Start.PrevNode = null;
 
-<<<<<<< HEAD
                 End.Value = value;
->>>>>>> parent of 936ac31 (Deleted)
-=======
->>>>>>> parent of fbd803a (DZ Done)
                 End.NextNode = null;
                 End.PrevNode = Start;
 
                 ++TotalCount;
-<<<<<<< HEAD
-<<<<<<< HEAD
-            }
-            else
-=======
                 return;
             }
-            if(TotalCount > 1)
->>>>>>> parent of 936ac31 (Deleted)
-=======
-            }
-            else
->>>>>>> parent of fbd803a (DZ Done)
+            if (TotalCount > 1)
             {
                 Node TempoNode = new Node();
                 TempoNode.Value = value;
@@ -76,13 +54,7 @@ namespace Algo002
                 End = TempoNode;
 
                 ++TotalCount;
-<<<<<<< HEAD
-<<<<<<< HEAD
-=======
                 return;
->>>>>>> parent of 936ac31 (Deleted)
-=======
->>>>>>> parent of fbd803a (DZ Done)
             }
         }
 
@@ -103,7 +75,7 @@ namespace Algo002
 
                     Node001.NextNode = TempoIterator;
                     TempoIterator.PrevNode = Node001;
-                    
+
                     ++TotalCount;
                     break;
                 }
@@ -119,8 +91,8 @@ namespace Algo002
             bool Finded = false;
 
             while (TempoIterator != null)
-            {                
-                if(TempoIterator.Value == searchValue)
+            {
+                if (TempoIterator.Value == searchValue)
                 {
                     Finded = true;
                     break;
@@ -128,7 +100,7 @@ namespace Algo002
                 TempoIterator = TempoIterator.NextNode;
             }
 
-            if(!Finded)
+            if (!Finded)
             {
                 return null;
             }
@@ -143,44 +115,19 @@ namespace Algo002
 
         public void RemoveNode(int Index)
         {
-            if(!Checker(Index))
+            if (!Checker(Index))
             {
                 return;
             }
-<<<<<<< HEAD
-<<<<<<< HEAD
 
-            Node Previous = Start;
             Node TempoIterator = Start;
-
             for (int i = 0; i < Index; ++i)
             {
-                Previous = TempoIterator;
                 TempoIterator = TempoIterator.NextNode;
             }
 
-            Previous.NextNode = TempoIterator.NextNode;
-=======
-           
-=======
-
-            Node Previous = Start;
->>>>>>> parent of fbd803a (DZ Done)
-            Node TempoIterator = Start;
-
-            for (int i = 0; i < Index; ++i)
-            {
-                Previous = TempoIterator;
-                TempoIterator = TempoIterator.NextNode;
-            }
-
-<<<<<<< HEAD
             TempoIterator.PrevNode.NextNode = TempoIterator.NextNode;
             TempoIterator.NextNode.PrevNode = TempoIterator.PrevNode;
->>>>>>> parent of 936ac31 (Deleted)
-=======
-            Previous.NextNode = TempoIterator.NextNode;
->>>>>>> parent of fbd803a (DZ Done)
         }
 
         public void RemoveNode(Node node)
@@ -190,15 +137,7 @@ namespace Algo002
 
             while (TempoIterator != null)
             {
-<<<<<<< HEAD
-<<<<<<< HEAD
-                if (TempoIterator == node)
-=======
                 if (TempoIterator.Value == node.Value)
->>>>>>> parent of 936ac31 (Deleted)
-=======
-                if (TempoIterator == node)
->>>>>>> parent of fbd803a (DZ Done)
                 {
                     Previous.NextNode = TempoIterator.NextNode;
                 }
@@ -206,9 +145,6 @@ namespace Algo002
                 TempoIterator = TempoIterator.NextNode;
             }
         }
-<<<<<<< HEAD
-<<<<<<< HEAD
-=======
         /*
         public void Show()
         {
@@ -220,15 +156,12 @@ namespace Algo002
                 TempoIterator = TempoIterator.NextNode;
             }
         }*/
->>>>>>> parent of 936ac31 (Deleted)
-=======
->>>>>>> parent of fbd803a (DZ Done)
 
         bool Checker(int SomeIndex)
         {
-            if(SomeIndex >= 0)
+            if (SomeIndex >= 0)
             {
-                if(SomeIndex < TotalCount)
+                if (SomeIndex < TotalCount)
                 {
                     return true;
                 }
