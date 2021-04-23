@@ -28,13 +28,13 @@ namespace Algo002
             }
             if (TotalCount == 1)
             {
-                Start.NextNode = End;
-                Start.PrevNode = null;
-
                 End = new Node();
                 End.Value = value;
                 End.NextNode = null;
                 End.PrevNode = Start;
+
+                Start.NextNode = End;
+                Start.PrevNode = null;
 
                 ++TotalCount;
                 return;
