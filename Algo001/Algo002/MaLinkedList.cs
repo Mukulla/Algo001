@@ -115,16 +115,24 @@ namespace Algo002
 
             if (Index == 0)
             {
-                Start.Value = Start.NextNode.Value;
-                Start.NextNode = Start.NextNode.NextNode;
+                Node TempoNode = Start.NextNode;
+
+                Start.NextNode = null;
+                Start.PrevNode = null;
+
+                Start = TempoNode;
                 Start.PrevNode = null;
                 return;
             }
 
             if (Index == TotalCount)
             {
-                End.Value = End.PrevNode.Value;
-                End.PrevNode = End.PrevNode.PrevNode;
+                Node TempoNode = End.PrevNode;
+
+                End.PrevNode = null;
+                End.NextNode = null;
+
+                End = TempoNode;
                 End.NextNode = null;
                 return;
             }
@@ -142,18 +150,11 @@ namespace Algo002
 
         public void RemoveNode(Node node)
         {
-            Node Previous = Start;
-            Node TempoIterator = Start;
+            Node Previous = node.PrevNode;
+            Node Next = node.NextNode;
 
-            while (TempoIterator != null)
-            {
-                if (TempoIterator.Value == node.Value)
-                {
-                    Previous.NextNode = TempoIterator.NextNode;
-                }
-                Previous = TempoIterator;
-                TempoIterator = TempoIterator.NextNode;
-            }
+            Previous.NextNode = Next;
+            Next.PrevNode = Previous;
         }
         /*
         public void Show()
