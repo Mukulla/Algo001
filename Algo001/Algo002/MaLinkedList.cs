@@ -104,17 +104,17 @@ namespace Algo002
             return TotalCount;
         }
 
-        public void RemoveNode(int Index)
+        public void RemoveNode(int index)
         {
-            if (!Checker(Index))
+            if (!Checker(index))
             {
                 return;
             }
 
-            if (Index == 0)
+            if (index == 0)
             {
                 Node TempoNode = Start.NextNode;
-
+               
                 Start.NextNode = null;
                 Start.PrevNode = null;
 
@@ -123,10 +123,10 @@ namespace Algo002
                 return;
             }
 
-            if (Index == TotalCount)
+            if (index == TotalCount)
             {
                 Node TempoNode = End.PrevNode;
-
+                
                 End.PrevNode = null;
                 End.NextNode = null;
 
@@ -134,10 +134,10 @@ namespace Algo002
                 End.NextNode = null;
                 return;
             }
-
+            
 
             Node TempoIterator = Start;
-            for (int i = 0; i < Index; ++i)
+            for (int i = 0; i < index; ++i)
             {
                 TempoIterator = TempoIterator.NextNode;
             }
@@ -145,7 +145,7 @@ namespace Algo002
             TempoIterator.PrevNode.NextNode = TempoIterator.NextNode;
             TempoIterator.NextNode.PrevNode = TempoIterator.PrevNode;
         }
-
+        
         public void RemoveNode(Node node)
         {
             Node Previous = node.PrevNode;
