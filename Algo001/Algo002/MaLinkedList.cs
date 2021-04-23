@@ -18,13 +18,10 @@ namespace Algo002
         {
             if (TotalCount == 0)
             {
+                Start = new Node();
                 Start.Value = value;
                 Start.NextNode = null;
                 Start.PrevNode = null;
-
-                //End.Value = value;
-                //End.NextNode = null;
-                //End.PrevNode = null;
 
                 ++TotalCount;
                 return;
@@ -34,6 +31,7 @@ namespace Algo002
                 Start.NextNode = End;
                 Start.PrevNode = null;
 
+                End = new Node();
                 End.Value = value;
                 End.NextNode = null;
                 End.PrevNode = Start;
