@@ -6,7 +6,9 @@ namespace Algo001
     {
         static void Main(string[] args)
         {
-            Console.WriteLine("Hello World!");
+            Tester.ExecuteTest();
+            //BuSorter.ShowArray( BuSorter.Sorte( BuSorter.GetRandomArray( 7, -13, 13 ) ) );
+            Console.ReadKey();
         }
     }
 }
