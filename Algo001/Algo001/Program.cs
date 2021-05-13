@@ -42,9 +42,9 @@ namespace Algo001
             Console.WriteLine(CountWays);
         }
 
-        static void Resulter(bool Value001)
+        static void Resulter(bool value001)
         {
-            if (Value001)
+            if (value001)
             {
                 Console.WriteLine("VALID TEST");
             }
@@ -55,116 +55,116 @@ namespace Algo001
         }
 
 
-        static int CalculateCount(Str_Geminus Sizes001)
+        static int CalculateCount(Str_Geminus sizes001)
         {
             CountWays = 0;
 
-            SetToOne(ref Sizes001.Primis);
-            SetToOne(ref Sizes001.Secundus);
+            SetToOne(ref sizes001.Primis);
+            SetToOne(ref sizes001.Secundus);
 
-            int[,] SomeArray001 = new int[Sizes001.Secundus, Sizes001.Primis];
+            int[,] someArray001 = new int[sizes001.Secundus, sizes001.Primis];
 
-            Fill(SomeArray001, 0);
-            //SetRandomValues(SomeArray001, 3, -1);
-            Set(SomeArray001, 1, 1);
+            Fill(someArray001, 0);
+            //SetRandomValues(someArray001, 3, -1);
+            Set(someArray001, 1, 1);
 
-            //Show(SomeArray001);
+            //Show(someArray001);
 
-            CalculateCountWays(SomeArray001, Set(0, 0));
+            CalculateCountWays(someArray001, Set(0, 0));
             //Console.WriteLine(CountWays);
 
             return CountWays;
         }
 
         //Вычисление количества маршрутов
-        static void CalculateCountWays(int[,] SomeArray001, Str_Geminus Koords001)
+        static void CalculateCountWays(int[,] someArray001, Str_Geminus koords001)
         {
-            Str_Geminus Right = Koords001;
+            Str_Geminus Right = koords001;
             ++Right.Primis;
-            Str_Geminus Down = Koords001;
+            Str_Geminus Down = koords001;
             ++Down.Secundus;
 
-            if (Get(SomeArray001, Right) == 1)
+            if (Get(someArray001, Right) == 1)
             {
                 ++CountWays;
                 return;
             }
-            if (Get(SomeArray001, Right) == -1)
+            if (Get(someArray001, Right) == -1)
             {
                 return;
             }
             else
             {
-                if (Right.Primis > SomeArray001.GetLength(1))
+                if (Right.Primis > someArray001.GetLength(1))
                 {
                     return;
                 }
-                CalculateCountWays(SomeArray001, Right);
+                CalculateCountWays(someArray001, Right);
             }
 
-            if (Get(SomeArray001, Down) == 1)
+            if (Get(someArray001, Down) == 1)
             {
                 ++CountWays;
                 return;
             }
-            if (Get(SomeArray001, Down) == -1)
+            if (Get(someArray001, Down) == -1)
             {
                 return;
             }
             else
             {
-                if (Down.Secundus > SomeArray001.GetLength(0))
+                if (Down.Secundus > someArray001.GetLength(0))
                 {
                     return;
                 }
-                CalculateCountWays(SomeArray001, Down);
+                CalculateCountWays(someArray001, Down);
             }
         }
 
         //Заполнение массива одним значением
-        static void Fill(int[,] SomeArray001, int Value001)
+        static void Fill(int[,] someArray001, int value001)
         {
-            for (int i = 0; i < SomeArray001.GetLength(0); ++i)
+            for (int i = 0; i < someArray001.GetLength(0); ++i)
             {
-                for (int j = 0; j < SomeArray001.GetLength(1); ++j)
+                for (int j = 0; j < someArray001.GetLength(1); ++j)
                 {
-                    SomeArray001[i, j] = Value001;
+                    someArray001[i, j] = value001;
                 }
             }
         }
 
-        static void SetRandomValues(int[,] SomeArray001, int CountValues, int Value001)
+        static void SetRandomValues(int[,] someArray001, int countValues, int value001)
         {
             //Дабы не было больше чем есть в массиве
-            int MaxCount = SomeArray001.Length * 1 / 3;
-            if (CountValues > MaxCount)
+            int MaxCount = someArray001.Length * 1 / 3;
+            if (countValues > MaxCount)
             {
-                CountValues = MaxCount;
+                countValues = MaxCount;
             }
 
             Random Rnd001 = new Random();
             Str_Geminus Let;
 
-            for (int i = 0; i < CountValues; ++i)
+            for (int i = 0; i < countValues; ++i)
             {
                 do
                 {
-                    Let.Primis = Rnd001.Next(1, SomeArray001.GetLength(1));
-                    Let.Secundus = Rnd001.Next(1, SomeArray001.GetLength(0));
+                    Let.Primis = Rnd001.Next(1, someArray001.GetLength(1));
+                    Let.Secundus = Rnd001.Next(1, someArray001.GetLength(0));
                 }
-                while (SomeArray001[Let.Secundus, Let.Primis] == Value001);
+                while (someArray001[Let.Secundus, Let.Primis] == value001);
 
-                SomeArray001[Let.Secundus, Let.Primis] = Value001;
+                someArray001[Let.Secundus, Let.Primis] = value001;
             }
         }
 
-        static void Show(int[,] SomeArray001)
+        static void Show(int[,] someArray001)
         {
-            for (int i = 0; i < SomeArray001.GetLength(0); ++i)
+            for (int i = 0; i < someArray001.GetLength(0); ++i)
             {
-                for (int j = 0; j < SomeArray001.GetLength(1); ++j)
+                for (int j = 0; j < someArray001.GetLength(1); ++j)
                 {
-                    Console.Write($"{SomeArray001[i, j],2}");
+                    Console.Write($"{someArray001[i, j],2}");
                 }
                 Console.WriteLine();
             }
@@ -173,49 +173,49 @@ namespace Algo001
         //Заполнение некоторых элементов массива
         //0 - Самый первый - лево верх
         //1 - Самый последний - право низ
-        static void Set(int[,] SomeArray001, int Value001, int State001)
+        static void Set(int[,] someArray001, int value001, int state001)
         {
-            switch (State001)
+            switch (state001)
             {
                 case 0:
-                    SomeArray001[0, 0] = Value001;
+                    someArray001[0, 0] = value001;
                     break;
                 case 1:
                     Str_Geminus Last;
-                    Last.Primis = SomeArray001.GetLength(1) - 1;
-                    Last.Secundus = SomeArray001.GetLength(0) - 1;
+                    Last.Primis = someArray001.GetLength(1) - 1;
+                    Last.Secundus = someArray001.GetLength(0) - 1;
 
-                    SomeArray001[Last.Secundus, Last.Primis] = Value001;
+                    someArray001[Last.Secundus, Last.Primis] = value001;
                     break;
             }
         }
 
         //Инициализация структуры
-        static Str_Geminus Set(int Primis001, int Secundus001)
+        static Str_Geminus Set(int primis001, int pecundus001)
         {
             Str_Geminus Returnar;
-            Returnar.Primis = Primis001;
-            Returnar.Secundus = Secundus001;
+            Returnar.Primis = primis001;
+            Returnar.Secundus = pecundus001;
 
             return Returnar;
         }
 
         //Получение значения с проверкой на выход за пределы
-        static int Get(int[,] SomeArray001, Str_Geminus Index001)
+        static int Get(int[,] someArray001, Str_Geminus index001)
         {
-            if (CheckBorders(Index001.Secundus, SomeArray001.GetLength(0)) && CheckBorders(Index001.Primis, SomeArray001.GetLength(1)))
+            if (CheckBorders(index001.Secundus, someArray001.GetLength(0)) && CheckBorders(index001.Primis, someArray001.GetLength(1)))
             {
-                return SomeArray001[Index001.Secundus, Index001.Primis];
+                return someArray001[index001.Secundus, index001.Primis];
             }
             return 0;
         }
 
         //Проверка нахождения в границах
-        static bool CheckBorders(int Value001, int Max)
+        static bool CheckBorders(int value001, int max)
         {
-            if (Value001 >= 0)
+            if (value001 >= 0)
             {
-                if (Value001 < Max)
+                if (value001 < max)
                 {
                     return true;
                 }
@@ -223,11 +223,11 @@ namespace Algo001
             return false;
         }
 
-        static void SetToOne(ref int Value001)
+        static void SetToOne(ref int value001)
         {
-            if (Value001 < 1)
+            if (value001 < 1)
             {
-                Value001 = 1;
+                value001 = 1;
             }
         }
     }
